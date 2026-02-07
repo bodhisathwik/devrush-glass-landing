@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
+import FeaturedModules from "./FeaturedModules";
+import ChallengeModulesGrid from "./ChallengeModulesGrid";
 
 const stats = [
   { value: "15+", label: "Minutes" },
@@ -9,61 +11,69 @@ const stats = [
 
 const LandingScreen = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 pt-20">
+    <div className="flex flex-col items-center px-4 pt-20 pb-10">
       {/* Hero glass card */}
-      <GlassCard
-        hoverable={false}
-        className="max-w-xl w-full text-center p-8 md:p-12"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-      >
-        <motion.h1
-          className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
+      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <GlassCard
+          hoverable={false}
+          className="max-w-xl w-full text-center p-8 md:p-12"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         >
-          Build Under{" "}
-          <span className="gradient-text">Pressure</span>
-        </motion.h1>
-        <motion.p
-          className="text-muted-foreground text-base md:text-lg"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.55, duration: 0.5 }}
-        >
-          Speed, precision, and creativity decide the winner.
-        </motion.p>
-      </GlassCard>
-
-      {/* Stats */}
-      <motion.div
-        className="flex flex-wrap justify-center gap-6 md:gap-10 mt-10"
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
-      >
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            className="text-center"
+          <motion.h1
+            className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8 + i * 0.1, duration: 0.4 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <div className="text-3xl md:text-4xl font-bold gradient-text">
-              {stat.value}
-            </div>
-            <div className="text-sm text-muted-foreground mt-1 uppercase tracking-wider">
-              {stat.label}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            Build Under{" "}
+            <span className="gradient-text">Pressure</span>
+          </motion.h1>
+          <motion.p
+            className="text-muted-foreground text-base md:text-lg"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.55, duration: 0.5 }}
+          >
+            Speed, precision, and creativity decide the winner.
+          </motion.p>
+        </GlassCard>
+
+        {/* Stats */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-6 md:gap-10 mt-10"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="text-center"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8 + i * 0.1, duration: 0.4 }}
+            >
+              <div className="text-3xl md:text-4xl font-bold gradient-text">
+                {stat.value}
+              </div>
+              <div className="text-sm text-muted-foreground mt-1 uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Featured + Challenge Modules sections */}
+      <div className="flex flex-col items-center gap-16 mt-16 w-full">
+        <FeaturedModules />
+        <ChallengeModulesGrid />
+      </div>
 
       {/* Floating decorative orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
         <div
           className="absolute w-72 h-72 rounded-full animate-float opacity-20"
           style={{
