@@ -3,11 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import LandingScreen from "@/components/LandingScreen";
 import PreparingScreen from "@/components/PreparingScreen";
-import FeaturedModules from "@/components/FeaturedModules";
-import ChallengeModulesGrid from "@/components/ChallengeModulesGrid";
+import ChallengeUnlockedScreen from "@/components/ChallengeUnlockedScreen";
 import Footer from "@/components/Footer";
 
-type Screen = "landing" | "preparing" | "dashboard";
+type Screen = "landing" | "preparing" | "challenge";
 
 const pageVariants = {
   initial: { opacity: 0, scale: 0.96 },
@@ -19,7 +18,7 @@ const Index = () => {
   const [screen, setScreen] = useState<Screen>("landing");
 
   const handleJoinNow = useCallback(() => setScreen("preparing"), []);
-  const handleContinue = useCallback(() => setScreen("dashboard"), []);
+  const handleContinue = useCallback(() => setScreen("challenge"), []);
 
   return (
     <div className="relative min-h-screen flex flex-col">
@@ -51,17 +50,15 @@ const Index = () => {
             </motion.div>
           )}
 
-          {screen === "dashboard" && (
+          {screen === "challenge" && (
             <motion.div
-              key="dashboard"
+              key="challenge"
               variants={pageVariants}
               initial="initial"
               animate="animate"
               exit="exit"
-              className="flex flex-col items-center gap-16 px-4 pt-24 pb-10"
             >
-              <FeaturedModules />
-              <ChallengeModulesGrid />
+              <ChallengeUnlockedScreen />
             </motion.div>
           )}
         </AnimatePresence>
