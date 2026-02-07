@@ -163,14 +163,15 @@
 
   /* Highlighted card variant */
   .glass-highlighted {
-    @apply glass;
-    border-color: hsla(190, 95%, 50%, 0.3);
-    box-shadow: var(--glow-primary);
+    background: linear-gradient(135deg, hsla(260, 60%, 55%, 0.9), hsla(200, 90%, 55%, 0.9), hsla(185, 90%, 55%, 0.9));
+    border: 1px solid hsla(200, 90%, 70%, 0.3);
+    box-shadow: 0 8px 32px hsla(200, 90%, 50%, 0.25);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
   }
 
   .glass-highlighted:hover {
-    border-color: hsla(190, 95%, 50%, 0.5);
-    box-shadow: var(--glow-hover);
+    box-shadow: 0 12px 40px hsla(200, 90%, 50%, 0.35);
     transform: translateY(-2px);
   }
 }
